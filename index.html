@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Desparche</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>El Desparche</h1>
+            <div class="subtitle">Tu solución visual contra el aburrimiento</div>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="todas">Todas</div>
+            <div class="tab" data-tab="categoria">Categorías</div>
+            <div class="tab" data-tab="energia">Energía</div>
+            <div class="tab" data-tab="audio">Audio Ideas</div>
+        </div>
+        
+        <div class="content active" id="todas">
+            <div class="task-list" id="all-tasks-list">
+                <!-- Las tareas se cargan dinámicamente -->
+            </div>
+        </div>
+        
+        <div class="content" id="categoria">
+            <div id="category-tasks-list">
+                <!-- Las tareas por categoría se cargan dinámicamente -->
+            </div>
+        </div>
+        
+        <div class="content" id="energia">
+            <div class="energy-filter">
+                <div class="energy-option energy-low active" data-energy="low">
+                    <div class="energy-icon">
+                        <i class="fas fa-battery-quarter"></i>
+                    </div>
+                    <div class="energy-name">Baja</div>
+                </div>
+                <div class="energy-option energy-medium" data-energy="medium">
+                    <div class="energy-icon">
+                        <i class="fas fa-battery-half"></i>
+                    </div>
+                    <div class="energy-name">Media</div>
+                </div>
+                <div class="energy-option energy-high" data-energy="high">
+                    <div class="energy-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <div class="energy-name">Alta</div>
+                </div>
+            </div>
+            
+            <div class="task-list" id="energy-tasks-list">
+                <!-- Las tareas por energía se cargan dinámicamente -->
+            </div>
+        </div>
+        
+        <div class="content" id="audio">
+            <div class="audio-container">
+                <div class="audio-controls">
+                    <div class="record-btn" id="recordButton">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="record-status" id="recordStatus">Pulsa para grabar</div>
+                </div>
+                
+                <textarea class="transcription-area" id="transcriptionArea" placeholder="Tu transcripción aparecerá aquí..."></textarea>
+                
+                <button class="btn btn-primary btn-block" id="saveTranscription">Guardar como tarea</button>
+                
+                <div class="recordings-list" id="recordingsList">
+                    <!-- Las grabaciones se cargan dinámicamente -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="add-btn" id="addTaskBtn">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    
+    <!-- Modal para agregar tarea -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Nueva Tarea</div>
+                <div class="close-modal" id="closeModal">&times;</div>
+            </div>
+            
+            <form id="taskForm">
+                <div class="form-group">
+                    <label class="form-label" for="taskTitle">Título</label>
+                    <input type="text" class="form-input" id="taskTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="taskCategory">Categoría</label>
+                    <select class="form-select" id="taskCategory" required>
+                        <option value="quick">🔵 Tareas rápidas</option>
+                        <option value="focus">🟢 Tareas con enfoque</option>
+                        <option value="creative">🟣 Ideas creativas</option>
+                        <option value="physical">🟠 Cosas físicas/manuales</option>
+                        <option value="selfcare">🟡 Autocuidado</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="taskEnergy">Nivel de energía</label>
+                    <select class="form-select" id="taskEnergy" required>
+                        <option value="low">Baja</option>
+                        <option value="medium">Media</option>
+                        <option value="high">Alta</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="taskDuration">Duración</label>
+                    <select class="form-select" id="taskDuration" required>
+                        <option value="5min">5 minutos</option>
+                        <option value="15min">15 minutos</option>
+                        <option value="30min">30 minutos</option>
+                        <option value="1h">1 hora o más</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="taskDescription">Descripción (opcional)</label>
+                    <textarea class="form-input" id="taskDescription" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
